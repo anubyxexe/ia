@@ -44,13 +44,13 @@ def chat(prompt):
 
 while True:
     prompt = input(Fore.CYAN + "Vous: ")
-    if(prompt == 'quit'):
+    if(prompt == 'exit'):
         quit()
     elif(prompt == 'clear'):
         os.system('cls' if os.name=='nt' else 'clear')
         logo()
     elif(prompt == 'help'):
-        print(Fore.MAGENTA + "[quit] pour fermer le programme")
+        print(Fore.MAGENTA + "[exit] pour fermer le programme")
         print("[clear] pour effacer la console")
         print("[help] pour obtenir de l'aide")
         print()
