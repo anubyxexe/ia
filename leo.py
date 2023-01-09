@@ -27,7 +27,7 @@ def logo():
     print("Intelligence artificielle basée sur \"text-davinci-003\"")
     print()
 logo()
-openai.api_key = "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"
+openai.api_key = "coller_votre_clef_openai"
 
 def chat(prompt):
     completions = openai.Completion.create(
