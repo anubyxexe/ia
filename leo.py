@@ -29,7 +29,7 @@ def logo():
     print("Intelligence artificielle basée sur \"text-davinci-003\"")
     print()
 logo()
-openai.api_key = "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"
+openai.api_key = "[votre_clef_api_openai]"
 
 def chat(prompt):
     completions = openai.Completion.create(
@@ -57,6 +57,7 @@ while True:
         print(Fore.MAGENTA + "[exit] pour fermer le programme")
         print("[clear] pour effacer la console")
         print("[help] pour obtenir de l'aide")
+        print("[set-expert] pour changer le domaine de leo")
         print()
     else:
         response = chat(prompt)
