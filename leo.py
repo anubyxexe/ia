@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3 -[v]S
+
+expert = "informatique"
 
 import openai
 from colorama import Fore
@@ -27,12 +29,12 @@ def logo():
     print("Intelligence artificielle basée sur \"text-davinci-003\"")
     print()
 logo()
-openai.api_key = "coller_votre_clef_openai"
+openai.api_key = "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"
 
 def chat(prompt):
     completions = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=prompt,
+        prompt= "tu est une intelligence artificiel qui s'appelle leo et qui est en expert en " + expert + " et ma question est :" + prompt,
         max_tokens=1024,
         n=1,
         stop=None,
@@ -46,6 +48,8 @@ while True:
     prompt = input(Fore.CYAN + "Vous: ")
     if(prompt == 'exit'):
         quit()
+    elif(prompt == 'set-expert'):
+        expert = input(Fore.LIGHTMAGENTA_EX + "[set-expert] leo vas devenir un expert en ")
     elif(prompt == 'clear'):
         os.system('cls' if os.name=='nt' else 'clear')
         logo()
