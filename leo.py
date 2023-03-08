@@ -1,5 +1,6 @@
 #!/usr/bin/env python3 -[v]S
 
+context = "bonjour"
 expert = "informatique"
 
 import openai
@@ -29,12 +30,12 @@ def logo():
     print("Intelligence artificielle basée sur \"text-davinci-003\"")
     print()
 logo()
-openai.api_key = "[votre_clef_api_openai]"
+openai.api_key = "YOUR_API_KEY"
 
 def chat(prompt):
     completions = openai.Completion.create(
         engine="text-davinci-003",
-        prompt= "tu est une intelligence artificiel qui s'appelle leo et qui est en expert en " + expert + " et ma question est :" + prompt,
+        prompt= "tu est une intelligence artificiel qui s'appelle leo, ton createur est anubyx ,et pour le context voici les question que je t'ai poser avant: " + context + " . tu est en expert en " + expert + " et ma question est :" + prompt,
         max_tokens=1024,
         n=1,
         stop=None,
@@ -50,6 +51,9 @@ while True:
         quit()
     elif(prompt == 'set-expert'):
         expert = input(Fore.LIGHTMAGENTA_EX + "[set-expert] leo vas devenir un expert en ")
+    elif(prompt == 'reset'):
+        context = "bonjour"
+        print(Fore.LIGHTMAGENTA_EX + "[reset] Le mémoire de leo a été réinitialisé")
     elif(prompt == 'clear'):
         os.system('cls' if os.name=='nt' else 'clear')
         logo()
@@ -58,8 +62,10 @@ while True:
         print("[clear] pour effacer la console")
         print("[help] pour obtenir de l'aide")
         print("[set-expert] pour changer le domaine de leo")
+        print("[reset] Pour réinitialiser la mémoire de leo")
         print()
     else:
+        context = context + ", \"" + prompt + "\"" 
         response = chat(prompt)
         print(Fore.GREEN + f"leo: {response}")
         print()
